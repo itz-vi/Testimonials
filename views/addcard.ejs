@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Members</title>
+</head>
+<style>
+    body {
+        background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: white;
+
+    }
+
+    .container {
+        height: 100vh;
+        display: flex;
+        justify-content: start;
+        flex-direction: column;
+        margin-top: 10px;
+
+    }
+
+    .form {
+        margin: 40px;
+        margin-right: 100px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+        background: linear-gradient(to bottom, #0077be, #3b8df2);
+        border-radius: 10px;
+        overflow: hidden;
+        perspective: 1000px;
+        transform-style: preserve-3d;
+        transform: rotateX(10deg);
+        transition: all 0.3s ease-in-out;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        animation: form-animation 0.5s ease-in-out;
+    }
+
+    @keyframes form-animation {
+        from {
+            transform: rotateX(-30deg);
+            opacity: 0;
+        }
+
+        to {
+            transform: rotateX(0deg);
+            opacity: 1;
+        }
+    }
+
+    .input {
+        padding: 8px;
+        font-size: 15px;
+        border-radius: 5px;
+        background-color: transparent;
+        transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        transform-style: preserve-3d;
+        backface-visibility: hidden;
+        color: rgb(255, 255, 255);
+        border: 2px solid #3b8df2;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    }
+
+    .input::placeholder {
+        color: #fff;
+    }
+
+    .input:hover,
+    .input:focus {
+        border-color: #3b8df2;
+        background-color: rgba(0, 53, 160, 0.2);
+        transform: scale(1.01) rotateY(10deg);
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.608);
+        outline: none;
+    }
+
+    button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #3b8df2;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        transform-style: preserve-3d;
+        backface-visibility: hidden;
+        transform: rotateX(-10deg);
+        transition: all 0.3s ease-in-out;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.463) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    }
+
+    button:hover {
+        background-color: #0276ba;
+        font-size: 17px;
+        transform: scale(1.01) rotateY(10deg) rotateX(10deg);
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    }
+
+    /* -----------------  select tag  box ------------ */
+    #ccd {
+        font-size: 3rem;
+        color: rgba(232, 240, 255, 0.932);
+        font-family: 'Merienda', cursive;
+        animation-name: Customise-Card;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+    }
+
+    @keyframes Customise-Card {
+        from {
+            text-shadow: 0px 0px 5px #fff, 0px 0px 5px #614ad3;
+        }
+
+        to {
+            text-shadow: 0px 0px 20px #fff, 0px 0px 20px #614ad3;
+        }
+    }
+
+    .items {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .items a {
+        text-decoration: none !important;
+    }
+
+
+    .top {
+        text-decoration: none;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        text-align: center;
+        --bg: #e74c3c;
+        --text-color: #fff;
+        position: relative;
+        width: 190px;
+        height: 40px;
+        border: none;
+        background: var(--bg);
+        color: var(--text-color);
+        padding: 7px;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: 0.2s;
+        border-radius: 5px;
+        opacity: 0.8;
+        box-shadow: #c0392b 0px 7px 2px, #000 0px 8px 5px;
+    }
+
+    .top:hover {
+        opacity: 1;
+
+    }
+
+    .top:active {
+        top: 4px;
+        box-shadow: #c0392b 0px 3px 2px, #000 0px 3px 5px;
+    }
+
+    .content {
+        position: absolute;
+        top: 15%;
+        margin-left: 990px;
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 400px;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        background-image: linear-gradient(-20deg, #b253df 0%, #21d5fdcc 100%);
+        color: #fff;
+        text-align: center;
+    }
+
+    .tag {
+        display: inline-block;
+        padding: 8px 16px;
+        margin: 10px;
+        border-radius: 20px;
+        background-color: rgba(255, 255, 255, 0.3);
+        background-image: linear-gradient(to top, #354077 40%, #5925b9ef 60%);
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .sag {
+        display: inline;
+        font-size: larger;
+        padding: 10px 17px;
+        margin-top: 20px;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.3);
+        background-image: linear-gradient(to top, #354077 40%, #5925b9ef 60%);
+        font-weight: bolder;
+
+    }
+
+
+    .opt {
+        background-color: #0088ff8b;
+        color: #27134ad2;
+        font-size: larger;
+        font-weight: 700;
+        font-family: sans-serif;
+        border-radius: 25px;
+        padding: 5px;
+    }
+
+
+
+    input::file-selector-button {
+        background-image: linear-gradient(135deg, #200b6def 0%, #005896ed 70%);
+        border: 0;
+        border-radius: 8px;
+        color: #ffffff;
+        padding: 8px;
+        text-shadow: 0 1px 1px #333;
+        transition: all 0.25s;
+    }
+
+    input::file-selector-button:hover {
+        background-position-x: 100%;
+        transform: scale(1.1);
+    }
+</style>
+
+<body>
+
+    <div class="container">
+        <div class="items">
+            <h1 id="ccd"> Add Profile</h1>
+            <a href="/test">
+                <h2 class="top">Back to Home</h2>
+            </a>
+        </div>
+
+        <form class="form" action="/addcard" method="post" enctype="multipart/form-data">
+            <input type="text" placeholder="Name" class="input" name="name" required>
+
+            <select class="input menu" name="post" required>
+                <option class="opt" disabled selected>Select post</option>
+                <option class="opt">HR, Envato</option>
+                <option class="opt">Systems analyst</option>
+                <option class="opt">Data scientist.</option>
+                <option class="opt">Product manager.</option>
+                <option class="opt">Lead Supervisor.</option>
+                <option class="opt">Administrator.</option>
+            </select>
+
+            <select class="input menu" name="country" required>
+                <option class="opt" disabled selected>Select Country</option>
+                <option class="opt" value="Germany">Berlin, Germany</option>
+                <option class="opt" value="Texas">Austin, Texas</option>
+                <option class="opt" value="Europe">Italy, Europe </option>
+                <option class="opt" value="Switzerland">Zurich, Switzerland</option>
+                <option class="opt" value="South Africa">Mexico, South Africa</option>
+                <option class="opt" value="England">London, England</option>
+                <option class="opt" value="Canada">Toronto, Canada</option>
+                <option class="opt" value="California">San Francisco, California</option>
+            </select>
+
+            <label>Userimage
+                <input type="file" name="images" required></label>
+            <label>Flag
+                <input type="file" name="images" required></label>
+            <label>Comaimage
+                <input type="file" name="images" required></label>
+            <button type="submit">Submit</button>
+        </form>
+
+
+    </div>
+
+
+
+
+</body>
+
+</html>
